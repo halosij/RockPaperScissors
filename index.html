@@ -5,66 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors!</title>
 </head>
-    <script>
-        
-        function getComputerChoice(){
-            const randomNumber = Math.floor(Math.random() * 3) + 1;
-            let computerChoice = "";
-            if(randomNumber === 1){
-                computerChoice = "Rock";
-            }
-            else if(randomNumber === 2){
-                computerChoice = "Paper";
-            }
-            else{
-                computerChoice = "Scissors";
-            }
-            return computerChoice;
-        }
 
-        function getPlayerChoice(){
-            let playerChoice = prompt("What do you pick? Rock, Paper or Scissors?");
-            return playerChoice.toUpperCase();
-        }
-       
-        function singleRound(){
-            const computerChoice = getComputerChoice(); 
-            let playerChoice = getPlayerChoice();
-
-            if(computerChoice === "Rock" && playerChoice === "PAPER"){
-                console.log("You win! Paper beats Rock!");
-            }
-            else if(computerChoice === "Paper" && playerChoice === "ROCK"){
-                console.log("You lose! Paper beats Rock!");
-            }
-            else if(computerChoice === "Rock" && playerChoice === "SCISSORS"){
-                console.log("You lose! Rock beats Scissors!");
-            }
-            else if(computerChoice === "Paper" && playerChoice === "SCISSORS"){
-                console.log("You win! Scissors beats Paper!");
-            }
-            else if(computerChoice === "Scissors" && playerChoice === "ROCK"){
-                console.log("You win! Rock beats Scissors!")
-            }
-            else if(computerChoice === "Scissors" && playerChoice === "PAPER"){
-                console.log("You lose! Scissors beats Paper!")
-            }
-            else{
-                console.log("It's a tie! Both picked: " + computerChoice)
-            }
-
-        }
-       
-        function bestOfFive(){
-            for(i = 1; i <= 5; i++){
-                singleRound();
-            }
-        }
-
-        bestOfFive();
-        
-    </script>
 <body>
-    
+    <div id="buttoncontainer">
+        <button class="rockbutton">Rock</button>
+        <button class="paperbutton">Paper</button>
+        <button class="scissorsbutton">Scissors</button>
+    </div>
+
+    <div class="result"></div>
 </body>
+<script>
+    const buttoncontainer = document.querySelector("#buttoncontainer");
+
+    const rockbutton = document.querySelector('.rockbutton');
+    rockbutton.addEventListener('click', () => {
+        console.log("it worked!");
+    });
+
+    
+   
+    function getComputerChoice(){
+        const randomNumber = Math.floor(Math.random() * 3) + 1;
+        let computerChoice = "";
+        if(randomNumber === 1){
+            computerChoice = "Rock";
+        }
+        else if(randomNumber === 2){
+            computerChoice = "Paper";
+        }
+        else{
+            computerChoice = "Scissors";
+        }
+        return computerChoice;
+    }
+
+    function getPlayerChoice(){
+        let playerChoice = prompt("What do you pick? Rock, Paper or Scissors?");
+        return playerChoice.toUpperCase();
+    }
+   
+    function singleRound(){
+        const computerChoice = getComputerChoice(); 
+        let playerChoice = getPlayerChoice();
+
+        if(computerChoice === "Rock" && playerChoice === "PAPER"){
+            console.log("You win! Paper beats Rock!");
+        }
+        else if(computerChoice === "Paper" && playerChoice === "ROCK"){
+            console.log("You lose! Paper beats Rock!");
+        }
+        else if(computerChoice === "Rock" && playerChoice === "SCISSORS"){
+            console.log("You lose! Rock beats Scissors!");
+        }
+        else if(computerChoice === "Paper" && playerChoice === "SCISSORS"){
+            console.log("You win! Scissors beats Paper!");
+        }
+        else if(computerChoice === "Scissors" && playerChoice === "ROCK"){
+            console.log("You win! Rock beats Scissors!")
+        }
+        else if(computerChoice === "Scissors" && playerChoice === "PAPER"){
+            console.log("You lose! Scissors beats Paper!")
+        }
+        else{
+            console.log("It's a tie! Both picked: " + computerChoice)
+        }
+
+    }
+   
+    // function bestOfFive(){
+    //     for(i = 1; i <= 5; i++){
+    //         singleRound();
+    //     }
+    // }
+
+    // bestOfFive();
+    
+</script>
 </html>
