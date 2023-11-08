@@ -13,18 +13,36 @@
         <button class="scissorsbutton">Scissors</button>
     </div>
 
+    <div class="playerDecision"></div>
+    <div class="computerDecision"></div>
     <div class="result"></div>
 </body>
 <script>
-    const buttoncontainer = document.querySelector("#buttoncontainer");
-
+    let playerChoice = "";
     const rockbutton = document.querySelector('.rockbutton');
     rockbutton.addEventListener('click', () => {
-        console.log("it worked!");
+        playerChoice = "ROCK";
+        singleRound();
     });
 
+    const paperbutton = document.querySelector('.paperbutton');
+    paperbutton.addEventListener('click', () => {
+        playerChoice = "PAPER";
+        singleRound();
+    });
+
+    const scissorsbutton = document.querySelector('.scissorsbutton');
+    scissorsbutton.addEventListener('click', () => {
+        playerChoice = "SCISSORS";
+        singleRound();
+    });
     
-   
+
+    let playerDecision = document.querySelector('.playerDecision');
+    let computerDecision = document.querySelector('.computerDecision');
+    let result = document.querySelector('.result');
+
+
     function getComputerChoice(){
         const randomNumber = Math.floor(Math.random() * 3) + 1;
         let computerChoice = "";
@@ -40,35 +58,42 @@
         return computerChoice;
     }
 
-    function getPlayerChoice(){
-        let playerChoice = prompt("What do you pick? Rock, Paper or Scissors?");
-        return playerChoice.toUpperCase();
-    }
+    // function getPlayerChoice(){
+    //     let playerChoice = prompt("What do you pick? Rock, Paper or Scissors?");
+    //     return playerChoice.toUpperCase();
+    // }
    
     function singleRound(){
         const computerChoice = getComputerChoice(); 
-        let playerChoice = getPlayerChoice();
-
+        //let playerChoice = getPlayerChoice();
+        computerDecision.textContent = "The computer picked: " + computerChoice.toUpperCase();
+        playerDecision.textContent = "You picked: " + playerChoice;
         if(computerChoice === "Rock" && playerChoice === "PAPER"){
-            console.log("You win! Paper beats Rock!");
+            result.textContent = "You win! Paper beats Rock!";
+            //console.log("You win! Paper beats Rock!");
         }
         else if(computerChoice === "Paper" && playerChoice === "ROCK"){
-            console.log("You lose! Paper beats Rock!");
+            result.textContent = "You lose! Paper beats Rock!";
+            //console.log("You lose! Paper beats Rock!");
         }
         else if(computerChoice === "Rock" && playerChoice === "SCISSORS"){
-            console.log("You lose! Rock beats Scissors!");
+            result.textContent = "You lose! Rock beats Scissors!";
+            //console.log("You lose! Rock beats Scissors!");
         }
         else if(computerChoice === "Paper" && playerChoice === "SCISSORS"){
-            console.log("You win! Scissors beats Paper!");
+            result.textContent = "You win! Scissors beats Paper!";
+            //console.log("You win! Scissors beats Paper!");
         }
         else if(computerChoice === "Scissors" && playerChoice === "ROCK"){
-            console.log("You win! Rock beats Scissors!")
+            result.textContent = "You win! Rock beats Scissors!";
+            //console.log("You win! Rock beats Scissors!")
         }
         else if(computerChoice === "Scissors" && playerChoice === "PAPER"){
-            console.log("You lose! Scissors beats Paper!")
+            result.textContent = "You lose! Scissors beats Paper!";
+            //console.log("You lose! Scissors beats Paper!")
         }
         else{
-            console.log("It's a tie! Both picked: " + computerChoice)
+            //console.log("It's a tie! Both picked: " + computerChoice)
         }
 
     }
