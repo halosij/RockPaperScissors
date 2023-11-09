@@ -1,0 +1,45 @@
+body {
+    background-color: #05161a;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 32px;
+    
+}
+
+.backgroundContainer{
+    background-color: #072E33;
+    width: 1000px;
+    height: 500px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.decisionResultContainer{
+    width: 500px;
+    height: 120pxpx;
+    border: 1px solid black;
+}
+
+button{
+    background-color: #0c7075;
+    color: white;
+    width: 140px;
+    height: 60px;
+    border-radius: 12px;
+    border-color: transparent;
+    font-size: 24px;
+}
+
+#buttoncontainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.centerMiddle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
