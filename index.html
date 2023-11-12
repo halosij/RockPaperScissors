@@ -9,19 +9,27 @@
 
 <body>
     <div class="centerMiddle">
+        <div>Play a game of Rock Paper Scissors! First to get 3 points wins!</div>
         <div class="backgroundContainer">
             <div class="contentContainer">
-                <div id="buttoncontainer">
-                    <button class="rockbutton">Rock</button>
-                    <button class="paperbutton">Paper</button>
-                    <button class="scissorsbutton">Scissors</button>
+                <div class="scoreContainer">
+                    <div class="playerScore">Your Score: </div>
+                    <div class="computerScore">Computerscore: </div>
+                </div>
+                <div id="buttondecisionContainer">
+                    <div id="buttoncontainer">
+                        <button class="rockbutton">Rock</button>
+                        <button class="paperbutton">Paper</button>
+                        <button class="scissorsbutton">Scissors</button>
+                    </div>
+                    
+                    <div class="decisionResultContainer">
+                        <div class="playerDecision">You picked: </div>
+                        <div class="computerDecision">The computer picked: </div>
+                        <div class="result"></div>
+                    </div>
                 </div>
                 
-                <div class="decisionResultContainer">
-                    <div class="playerDecision">You picked: </div>
-                    <div class="computerDecision">The computer picked: </div>
-                    <div class="result"></div>
-                </div>
                 
             </div>
         </div>
@@ -29,6 +37,8 @@
     
 </body>
 <script>
+    let ps = 0;
+    let cs = 0;
     let playerChoice = "";
     const rockbutton = document.querySelector('.rockbutton');
     rockbutton.addEventListener('click', () => {
@@ -48,10 +58,14 @@
         singleRound();
     });
     
+    let playerScore = document.querySelector('.playerScore');
+    let computerScore = document.querySelector('.computerScore');
 
     let playerDecision = document.querySelector('.playerDecision');
     let computerDecision = document.querySelector('.computerDecision');
     let result = document.querySelector('.result');
+
+    const buttondecisionContainer = document.querySelector('#buttondecisionContainer');
 
 
     function getComputerChoice(){
@@ -75,36 +89,61 @@
     // }
    
     function singleRound(){
+
         const computerChoice = getComputerChoice(); 
         //let playerChoice = getPlayerChoice();
         computerDecision.textContent = "The computer picked: " + computerChoice.toUpperCase();
         playerDecision.textContent = "You picked: " + playerChoice;
         if(computerChoice === "Rock" && playerChoice === "PAPER"){
             result.textContent = "You win! Paper beats Rock!";
+            ps++;
             //console.log("You win! Paper beats Rock!");
         }
         else if(computerChoice === "Paper" && playerChoice === "ROCK"){
             result.textContent = "You lose! Paper beats Rock!";
+            cs++;
             //console.log("You lose! Paper beats Rock!");
         }
         else if(computerChoice === "Rock" && playerChoice === "SCISSORS"){
             result.textContent = "You lose! Rock beats Scissors!";
+            cs++;
             //console.log("You lose! Rock beats Scissors!");
         }
         else if(computerChoice === "Paper" && playerChoice === "SCISSORS"){
             result.textContent = "You win! Scissors beats Paper!";
+            ps++;
             //console.log("You win! Scissors beats Paper!");
         }
         else if(computerChoice === "Scissors" && playerChoice === "ROCK"){
             result.textContent = "You win! Rock beats Scissors!";
+            ps++;
             //console.log("You win! Rock beats Scissors!")
         }
         else if(computerChoice === "Scissors" && playerChoice === "PAPER"){
             result.textContent = "You lose! Scissors beats Paper!";
+            cs++;
             //console.log("You lose! Scissors beats Paper!")
         }
         else{
+            result.textContent = "It's a tie! Both picked: " + computerChoice;
             //console.log("It's a tie! Both picked: " + computerChoice)
+
+        }
+
+        playerScore.textContent = "Your Score: " + ps;
+        computerScore.textContent = "Computerscore: " + cs;
+
+        if(cs === 3 || ps === 3){
+            buttondecisionContainer.remove();
+            let end = document.createElement('div');
+            if(cs === 3){
+                end.textContent = "You lose! Try harder next time!";
+            }
+            else{
+                end.textContent = "You win! Good job!";
+            }
+            document.querySelector('.backgroundContainer').appendChild(end);
+            
         }
 
     }

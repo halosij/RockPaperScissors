@@ -7,6 +7,7 @@ body {
 }
 
 .backgroundContainer{
+    margin-top: 12px;
     background-color: #072E33;
     width: 1000px;
     height: 500px;
@@ -20,7 +21,7 @@ body {
 .decisionResultContainer{
     width: 500px;
     height: 120pxpx;
-    border: 1px solid black;
+    margin-top: 50px;
 }
 
 button{
@@ -33,6 +34,10 @@ button{
     font-size: 24px;
 }
 
+button:hover{
+    background-color: #0f969c;
+}
+
 #buttoncontainer{
     display: flex;
     justify-content: space-between;
@@ -42,4 +47,17 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    flex-direction: column;
 }
+
+.result {
+    height: 30px;
+}
+
+.scoreContainer{
+    display: flex;
+    gap: 70px;
+    margin-bottom: 40px;
+}
+
