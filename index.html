@@ -13,8 +13,8 @@
         <div class="backgroundContainer">
             <div class="contentContainer">
                 <div class="scoreContainer">
-                    <div class="playerScore">Your Score: </div>
-                    <div class="computerScore">Computerscore: </div>
+                    <div class="playerScore">Your Score: 0</div>
+                    <div class="computerScore">Computerscore: 0</div>
                 </div>
                 <div id="buttondecisionContainer">
                     <div id="buttoncontainer">
@@ -136,6 +136,9 @@
         if(cs === 3 || ps === 3){
             buttondecisionContainer.remove();
             let end = document.createElement('div');
+            let endButton = document.createElement('button');
+            endButton.textContent = "Play again";
+            endButton.style.marginTop = "12px";
             if(cs === 3){
                 end.textContent = "You lose! Try harder next time!";
             }
@@ -143,18 +146,18 @@
                 end.textContent = "You win! Good job!";
             }
             document.querySelector('.backgroundContainer').appendChild(end);
-            
+            document.querySelector('.backgroundContainer').appendChild(endButton);
+            endButton.addEventListener('click', () =>{
+                end.remove();
+                endButton.remove();
+                document.querySelector('.backgroundContainer').appendChild(buttondecisionContainer);
+                cs = 0;
+                ps = 0;
+                playerScore.textContent = "Your Score: 0";
+                computerScore.textContent = "Computerscore: 0";
+            });
         }
-
-    }
-   
-    // function bestOfFive(){
-    //     for(i = 1; i <= 5; i++){
-    //         singleRound();
-    //     }
-    // }
-
-    // bestOfFive();
-    
+        
+    }  
 </script>
 </html>
